@@ -1,89 +1,47 @@
 body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: linear-gradient(to right, #eef2f3, #d9e2ec);
-    color: #333;
-}
-
-.container {
-    max-width: 900px;
-    margin: 40px auto;
     padding: 20px;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    color: #555;
-    font-size: 1.1rem;
-}
-
-section {
-    background: #ffffff;
-    padding: 25px;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-}
-
-.guide h2,
-.form-section h2 {
-    color: #1f3c88;
-    margin-bottom: 15px;
-}
-
-.guide h3 {
-    margin-top: 20px;
-    color: #2a5298;
-}
-
-p {
-    line-height: 1.6;
-}
-
 form {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 label {
-    font-weight: 600;
+    font-weight: bold;
 }
 
-input, select {
+input, select, button {
     padding: 8px;
     border-radius: 6px;
     border: 1px solid #ccc;
 }
 
 button {
-    margin-top: 10px;
-    padding: 12px;
-    background: #1f3c88;
+    background-color: #4CAF50;
     color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
 }
 
 button:hover {
-    background: #162c66;
+    background-color: #45a049;
 }
 
-.result {
+#result {
     margin-top: 20px;
-    padding: 15px;
-    background: #e8f0fe;
-    border-left: 5px solid #1f3c88;
-    border-radius: 6px;
+    font-size: 18px;
+    color: #333;
 }
