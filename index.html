@@ -1,98 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>AI Sleep Recommendation Model</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-<div class="container">
+<form id="sleepForm" method="POST">
+  <label>Age:</label>
+  <input type="number" name="age" required><br>
 
-    <!-- HEADER -->
-    <header>
-        <h1>AI Sleep Recommendation Model</h1>
-        <p class="subtitle">A personalized approach to understanding sleep needs</p>
-    </header>
+  <label>Activity:</label>
+  <select name="activity" required>
+    <option value="low">Low</option>
+    <option value="moderate" selected>Moderate</option>
+    <option value="high">High</option>
+  </select><br>
 
-    <!-- GUIDE SECTION -->
-    <section class="guide">
-        <h2>The Guide to My Sleep Model</h2>
+  <label>Energy:</label>
+  <select name="energy" required>
+    <option value="low">Low</option>
+    <option value="moderate" selected>Moderate</option>
+    <option value="high">High</option>
+  </select><br>
 
-        <h3>Why did I choose to create this project?</h3>
-        <p>
-            Lack of sleep is very common among high school and college students, who often prioritize homework
-            and activities over rest. I wanted to create an AI-based tool to determine how much sleep someone needs
-            based on key factors like age, energy, anxiety, daily activity, and brain performance.
-        </p>
+  <label>Anxiety:</label>
+  <select name="anxiety" required>
+    <option value="low">Low</option>
+    <option value="moderate" selected>Moderate</option>
+    <option value="high">High</option>
+  </select><br>
 
-        <h3>How does this project work?</h3>
-        <p>
-            I created two models: a manually-coded model and a machine learning model. The manual model used
-            conditional statements, while the ML model was trained on sample data using a Random Forest
-            Regressor to predict sleep hours.
-        </p>
+  <label>Brain Performance:</label>
+  <select name="brain" required>
+    <option value="low">Low</option>
+    <option value="moderate" selected>Moderate</option>
+    <option value="high">High</option>
+  </select><br>
 
-        <p>
-            The ML model proved more accurate because it identified patterns in the data rather than relying on
-            arbitrary human rules.
-        </p>
+  <button type="submit">Predict Sleep</button>
+</form>
 
-        <h3>Conclusion</h3>
-        <p>
-            You can now use the app below to get a personalized sleep recommendation based on your unique habits.
-        </p>
-    </section>
-
-    <!-- FORM SECTION -->
-    <section class="form-section">
-        <h2>Get Your Sleep Recommendation</h2>
-
-        <form method="POST">
-            <label>Age:</label>
-            <input type="number" name="age" required>
-
-            <label>Daily Activity Level:</label>
-            <select name="activity">
-                <option value="low">Low</option>
-                <option value="moderate">Moderate</option>
-                <option value="high">High</option>
-            </select>
-
-            <label>Energy Level:</label>
-            <select name="energy">
-                <option value="low">Low</option>
-                <option value="moderate">Moderate</option>
-                <option value="high">High</option>
-            </select>
-
-            <label>Anxiety Level:</label>
-            <select name="anxiety">
-                <option value="low">Low</option>
-                <option value="moderate">Moderate</option>
-                <option value="high">High</option>
-            </select>
-
-            <label>Brain Performance Level:</label>
-            <select name="brain">
-                <option value="low">Low</option>
-                <option value="moderate">Moderate</option>
-                <option value="high">High</option>
-            </select>
-
-            <button type="submit">Predict Sleep</button>
-        </form>
-
-        {% if result %}
-        <div class="result" id="result">
-            <h3>Recommended Sleep:</h3>
-            <p>{{ result }}</p>
-        </div>
-        <script>
-            document.getElementById("result").scrollIntoView({ behavior: "smooth" });
-        </script>
-        {% endif %}
-
-    </section>
+<div id="result">
+  {% if result %}
+    <p>Recommended Sleep: {{ result }}</p>
+  {% endif %}
 </div>
-</body>
-</html>
+
+<script>
+  // Prevent scroll jump on form submit
+  const form = document.getElementById("sleepForm");
+  form.addEventListener("submit", function(e) {
+    e.preventDefault(); // stop default reload
+    this.submit();      // submit normally, but keeps scroll position
+  });
+
+  // Clear result on page reload
+  window.addEventListener("beforeunload", function() {
+    document.getElementById("result").innerHTML = "";
+  });
+</script>
