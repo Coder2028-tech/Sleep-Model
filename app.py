@@ -8,19 +8,20 @@ app = Flask(__name__)
 def index():
     result = None
     if request.method == "POST":
-        age = int(request.form.get("age"))
-        activity = mapping[request.form.get("activity")]
-        energy = mapping[request.form.get("energy")]
-        anxiety = mapping[request.form.get("anxiety")]
-        brain = mapping[request.form.get("brain")]
+        try:
+            age = int(request.form.get("age", 15))
+            activity = mapping.get(request.form.get("activity"), 1)
+            energy = mapping.get(request.form.get("energy"), 1)
+            anxiety = mapping.get(request.form.get("anxiety"), 1)
+            brain = mapping.get(request.form.get("brain"), 1)
 
-        user_features = np.array([age, activity, energy, anxiety, brain]).reshape(1, -1)
-        predicted_sleep = rf.predict(user_features)
-        hours = int(predicted_sleep[0])
-        minutes = int((predicted_sleep[0] - hours) * 60)
-        result = f"{hours} hours and {minutes} minutes"
+            features = np.array([age, activity, energy, anxiety, brain]).reshape(1, -1)
+            predicted_sleep = rf.predict(features)
+            hours = int(predicted_sleep[0])
+            minutes = int((predicted_sleep[0] - hours) * 60)
+            result = f"{hours} hours and {minutes} minutes"
+
+        except Exception as e:
+            result = f"Error: {e}"
 
     return render_template("index.html", result=result)
-
-if __name__ == "__main__":
-    app.run(debug=True)
