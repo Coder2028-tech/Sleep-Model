@@ -1,14 +1,14 @@
 AI Sleep Predictor
 A machine learning web app that predicts optimal sleep duration based on personal lifestyle factors.
 What it does
-Users input five factors — age, physical activity level, energy level, anxiety level, and mental activity — and the app returns a personalized sleep duration recommendation in hours and minutes.
+Users input five factors: Age, physical activity level, energy level, anxiety level, and mental activity, and the app returns a personalized sleep duration recommendation in hours and minutes.
 Tech Stack
 
-Python — core language
-Flask — web framework
-scikit-learn — Random Forest model
-NumPy — feature processing
-HTML/CSS — frontend interface
+Python: Core language
+Flask: Web framework
+scikit-learn: Random Forest model
+NumPy: Feature processing
+HTML/CSS: Frontend interface
 
 How it works
 
@@ -18,9 +18,9 @@ Model predicts optimal sleep hours
 Result is displayed on the same page
 
 Files
-app.py — Flask application and routing
-sleep_model.py — trained Random Forest model and input mappings
-templates/index.html — frontend interface
+app.py: Flask application and routing
+sleep_model.py: Trained Random Forest model and input mappings
+templates/index.html: Frontend interface
 
 How to run
 bashpip install flask numpy scikit-learn
